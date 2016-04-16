@@ -69,7 +69,7 @@ Each suspension cable is spaced 50 ft apart from one-another and has a diameter 
 the diameter of the cable is less important than the height (imagining that brick connections are 3.3 times 
 the tensile strength of steel), so I will use height as the parameter for the number of bricks needed. 
 The height of any suspension cable of this bridge is a function of: f(x) = c^2 - (a*x)^2.<br/><br/>
-If we use a couple JavaScript functions (of which can be found <a href="">here</a>) 
+If we use a couple JavaScript functions (of which can be found <a href="https://github.com/everette00/codefoo/blob/master/suspensionHeight.js">here</a>) 
 to take the monotonous effort of calculating 124 cable heights, this is the process to find the number of bricks:
 
 var ends = Math.round(numBricks(903, 30) / 0.07) * 2;<br/>
