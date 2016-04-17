@@ -1,3 +1,26 @@
+# Scrabble Word Finder
+
+This program takes input from the user to get a list of letters that they have then does a search over every word given through "words.txt". For any given word, if the number of total letters the user has is less than the count of letters for a word, we discard that word. Otherwise, we look through the individual letters in the word to evaluate whether it is a word that could be spelled with our letters. It is done using a hashmap to calculate the frequency of letters in the word compared to a hashmap of the frequency of letters in our letter set - this is essentially to discard words with more of a letter than what we have. Words with letters we don't have are also discarded.
+
+Once we've filtered all words that we can't spell with what letters we have, we begin by evaluating the point values for each letter in the rest of the words. For every one of these words, we see if there was a previously best word - if so, replace that word with the word we just evaluated. Eventually we've found the best word in the list.
+
+# AZERTY Keyboard
+
+The AZERTY keyboard translation boils down to this: every key on the AZERTY keyboard maps to equivalent keys on a QWERTY keyboard (with extra characters on some keys). Using a character -> character hashmap, I entered all key differences between these keyboards, where AZERTY keyboard characters were keys in the hashmap, and the associated values are the characters on the QWERTY keyboard. However, characters A-Za-z (minus the M characters), were mapped in two aligned strings. (A->Q, Z->W, etc).
+
+Once mapped, for any input given to the program in AZERTY format, I replaced the characters in the input with their equivalent QWERTY characters and added it to a translation string. To handle the sticky 'H' key, for any contiguous repetition of 'H' characters (captilalized or lower case), I removed all but the first occurance of the character.
+
+# ISO 8601 DateTime
+
+I used the formats given from the website for this program. Each format boils down to this: there is a value for the day, the month and the year, as well as the time stamp and time zone offset. If there was any extra information, I stripped that out to only have the day, month, year and time, if that information was available. If there was a "PM" value added on the end of the input, before I stripped that out, I used it to convert hours less than 12 to the hour plus 12 
+(04:00:00 -> 16:00:00).
+
+Once that was done, the string that was left over was in the format of either "3/20/2016" or "3/20/2016 04:00:00".
+If any component of the date time string were just one character in size, I padded the component with a '0' character.
+Then I formatted that string to follow the ISO8601 format - YYYY-MM-DDTHH:MM:SS. I did this by passing all the information to one of three iso8601 methods that evaluated the information passed to it. If given year was not four characters long, find whether the day or month given were and swap that around. Similarly, if the month value was larger than 12 values, swap it with the day value.
+
+Lastly, if the string given was already in some pseduo ISO8601 format, break it down and rebuild it to follow the standard.
+
 # Rebuilding the Golden Gate Bridge using Legos:
 
 First, I began by searching the information on measurements for the bridge. All of the assumptions I've made
